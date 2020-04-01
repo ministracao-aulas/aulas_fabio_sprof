@@ -1,0 +1,27 @@
+$p = new Product;
+$p->category=2
+$p->manufacturer=3
+$p->name="produto 5"
+$p->stock_qtd="10"
+$p->available=false
+$p->price="10.75"
+$p->save()
+
+$p = new Product;
+$p->category=1
+$p->manufacturer=2
+$p->name="produto sdfuidhf"
+$p->stock_qtd="10"
+$p->available=true
+$p->price="52.75"
+$p->save()
+$p->save()
+
+$p = new Product;
+$p->category=2
+$p->manufacturer=3
+$p->name="produxcvxvxvxcv 5"
+$p->stock_qtd="10"
+$p->available=true
+$p->price="100.50"
+$p->save()
