@@ -38,5 +38,6 @@ Route::get('/produtos/{sessao}/{tag}',    function($sessao, $tag)
     ];
 
     echo "Listando produtos da sessão: " . $sessoes[$sessao]['title'].", que estão com a tag $tag";
+    echo "Lic momsod stando produtos da sessão: " . $sessoes[$sessao]['title'].", que estão com a tag $tag";
 
 })->name('produtos_por_sessao_e_tag');
