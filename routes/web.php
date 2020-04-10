@@ -15,29 +15,19 @@ use App\Http\Controllers\ProductsController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('templates.uikit/app');
 });
 
-Route::get('/createfakeproduct',            'ProductsController@createFakeProduct')->name('create_fake_product');
-Route::get('/products',                     'ProductsController@index')->name('product_list');
-Route::get('/product/{id}',                 'ProductsController@show')->name('product_detail');
-Route::get('/delete/product/{id}',          'ProductsController@destroy')->name('product_delete');
-
-Route::get('/aula/rotas/{nome}/{sobrenome}',    function($f_nome, $l_nome)
-{
-    echo "Olá ".$f_nome." ".$l_nome;
-})->name('nome_sn');
-
-Route::get('/produtos/{sessao}/{tag}',    function($sessao, $tag)
-{
-    $sessoes = [
-       'casa_e_banho' => ['title' => 'Casa e Banho', 'tags'=> ['promo' , 'casa', 'banho']],
-       'construcao' => ['title' => 'Construção', 'tags'=> ['promo' , 'casa', 'banho']],
-       'comercio' => ['title' => 'Comércio', 'tags'=> ['promo' , 'casa', 'banho']],
-       'pets' => ['title' => 'Pets', 'tags'=> ['promo' , 'casa', 'banho']],
+Route::get('/note/{slug}', function ($slug) {
+    $data = [
+        'note_name'         => 'Minha Nota Bonita',
+        'note_description'  => 'Minha Nota Bonita',
+        'note_visibility'   => 'public',
+        'note_content'      => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus repellendus corrupti explicabo porro expedita, iste pariatur dolor natus sit inventore id a nobis in, tenetur laboriosam repellat est magnam earum.'
     ];
+    return view('templates.uikit.pages.note', compact('data'));
+});
 
-    echo "Listando produtos da sessão: " . $sessoes[$sessao]['title'].", que estão com a tag $tag";
-    echo "Lic momsod stando produtos da sessão: " . $sessoes[$sessao]['title'].", que estão com a tag $tag";
-
-})->name('produtos_por_sessao_e_tag');
+Route::post('/actions/update', function () {
+    return response()->json(request()->all(), 200);
+})->name('actions_update_post');
